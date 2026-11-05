@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: multilingual-customer-support-agent
+    runtime: docker
+    plan: starter
+    healthCheckPath: /health
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
+      - key: CHAT_RATE_LIMIT_PER_MINUTE
+        value: "20"
