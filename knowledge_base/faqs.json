@@ -1,0 +1,16 @@
+{
+  "business_name": "REPLACE_WITH_COMPANY_NAME",
+  "business_description": "REPLACE_WITH_A_ONE_LINE_BUSINESS_DESCRIPTION",
+  "faqs": [
+    {
+      "question": "How can I contact support?",
+      "answer": "Replace this answer with your verified support contact details."
+    }
+  ],
+  "policies": {
+    "delivery": "REPLACE_WITH_VERIFIED_DELIVERY_POLICY",
+    "returns": "REPLACE_WITH_VERIFIED_RETURN_POLICY",
+    "refunds": "REPLACE_WITH_VERIFIED_REFUND_POLICY",
+    "working_hours": "REPLACE_WITH_VERIFIED_SUPPORT_HOURS"
+  }
+}
