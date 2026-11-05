@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <title>Customer Support</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand"><div class="mark">S</div><div><h1>Support Assistant</h1><p>Telugu · हिंदी · English</p></div></div>
+      <select id="language" aria-label="Reply language">
+        <option value="auto">Auto detect</option><option value="en">English</option>
+        <option value="te">తెలుగు</option><option value="hi">हिन्दी</option>
+      </select>
+    </header>
+    <section class="intro"><span class="online"></span><span>Here to help, in your language</span></section>
+    <section id="messages" class="messages" aria-live="polite">
+      <article class="bubble assistant">Hello! నమస్కారం! नमस्ते! How can I help you today?</article>
+    </section>
+    <div id="status" class="status" role="status"></div>
+    <form id="chat-form" class="composer">
+      <button id="mic" class="icon-button" type="button" title="Speak" aria-label="Speak">🎙</button>
+      <input id="message" autocomplete="off" placeholder="Type your message..." maxlength="4000" required>
+      <button class="send" type="submit">Send</button>
+    </form>
+    <footer><button id="new-chat" class="link-button" type="button">New chat</button><span>Do not share OTPs or passwords.</span></footer>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
