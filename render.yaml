@@ -2,7 +2,7 @@ services:
   - type: web
     name: multilingual-customer-support-agent
     runtime: docker
-    plan: starter
+    plan: free
     healthCheckPath: /health
     envVars:
       - key: GEMINI_API_KEY
