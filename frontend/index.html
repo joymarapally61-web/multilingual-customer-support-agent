@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#101827">
-  <title>Customer Support</title>
+  <meta name="description" content="Multilingual customer support in Telugu, Hindi and English.">
+  <title>Customer Support Assistant</title>
   <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
@@ -20,14 +21,19 @@
     <section id="messages" class="messages" aria-live="polite">
       <article class="bubble assistant">Hello! నమస్కారం! नमस्ते! How can I help you today?</article>
     </section>
-    <div id="status" class="status" role="status"></div>
+    <div id="status" class="status" role="status" aria-live="polite"></div>
     <form id="chat-form" class="composer">
-      <button id="mic" class="icon-button" type="button" title="Speak" aria-label="Speak">🎙</button>
-      <input id="message" autocomplete="off" placeholder="Type your message..." maxlength="4000" required>
+      <button id="mic" class="icon-button" type="button" title="Speak" aria-label="Start voice input">🎙</button>
+      <input id="message" autocomplete="off" placeholder="Type your message..." maxlength="4000" required aria-label="Your message">
       <button class="send" type="submit">Send</button>
     </form>
-    <footer><button id="new-chat" class="link-button" type="button">New chat</button><span>Do not share OTPs or passwords.</span></footer>
+    <footer>
+      <button id="new-chat" class="link-button" type="button">New chat</button>
+      <label class="toggle"><input id="auto-speak" type="checkbox"> Read replies aloud</label>
+      <button id="speak" class="link-button" type="button">Stop speech</button>
+      <span>Never share OTPs or passwords.</span>
+    </footer>
   </main>
-  <script src="/static/app.js"></script>
+  <script src="/static/app.js" defer></script>
 </body>
 </html>
