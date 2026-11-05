@@ -1,39 +1,35 @@
 # Multilingual Customer Support AI Agent
 
-A starter web application for customer support in Telugu, Hindi and English, powered by Gemini.
+A starter web app for customer support in Telugu, Hindi and English, powered by Gemini.
 
-## Architecture
-
-- `frontend/`: responsive chat interface with language selection and browser speech input/output.
-- `backend/`: FastAPI server; calls Gemini from the server so the API key is never exposed to the browser.
-- `knowledge_base/`: business-specific FAQs and policies.
-- `tests/`: basic API tests.
-
-## Requirements
-
-- Python 3.10+
-- A Gemini API key from Google AI Studio
+## Included
+- Responsive chat UI with language selection.
+- Server-side Gemini API call; the API key is never sent to the browser.
+- Conversation context held in the browser for the current session.
+- Browser speech recognition input and optional speech-synthesis output.
+- Configurable JSON knowledge base.
+- Basic per-process request throttling and security response headers.
 
 ## Run locally
+1. Install Python 3.10 or newer.
+2. Create a virtual environment and activate it.
+3. Install dependencies: `pip install -r requirements.txt`.
+4. Copy `.env.example` to `.env` and set your Gemini API key.
+5. Run `uvicorn backend.main:app --reload`.
+6. Open http://127.0.0.1:8000.
 
-1. Create and activate a virtual environment.
-2. Install dependencies: `pip install -r requirements.txt`
-3. Copy `.env.example` to `.env` and set `GEMINI_API_KEY`.
-4. Start the server: `uvicorn backend.main:app --reload`
-5. Open http://127.0.0.1:8000
+Never commit `.env`. Configure `ALLOWED_ORIGINS` as a comma-separated list only if the frontend is hosted on a different origin.
 
-Do not commit `.env`. The included order/refund/ticket functions are DEMO stubs and must be connected to authenticated business systems before real customer use.
+## Important limitations — not production-ready yet
+- Browser speech recognition and voices vary by browser/device. This is not Gemini Live streaming audio.
+- Order lookup, refund requests, ticket creation and human handoff are not connected. Do not claim these actions work.
+- There is no customer login, verified identity, database, tenant isolation or admin dashboard yet.
+- The in-memory rate limit is per process and is not a substitute for a shared production rate limiter.
+- Before production, implement authentication, server-side authorization, tenant-scoped data access, real business APIs, persistent ticketing, audit logs, privacy/retention controls, monitoring and security testing.
+- Replace the sample knowledge base with the business's approved policies. The model must not be treated as the source of truth for order or payment state.
 
-## Important production work
-
-- Replace demo data and policies with verified business data.
-- Add customer authentication and verify order ownership server-side.
-- Connect real order, refund and ticket APIs; require authorization for sensitive actions.
-- Add rate limits, abuse protection, audit logs, retention controls and monitoring.
-- Configure CORS for your actual frontend domain.
-- Review privacy, consent and applicable Indian data-protection requirements.
-- Browser Web Speech support and Telugu/Hindi voices vary by browser and device. This is browser speech, not Gemini Live audio.
-
-## Environment
-
-See `.env.example`. Never put the Gemini key in frontend JavaScript.
+## Environment variables
+- `GEMINI_API_KEY` — required server-side secret.
+- `GEMINI_MODEL` — optional model override (default: `gemini-2.5-flash`).
+- `ALLOWED_ORIGINS` — optional comma-separated frontend origins.
+- `CHAT_RATE_LIMIT_PER_MINUTE` — optional per-IP in-memory limit (default 20).
